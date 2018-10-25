@@ -1,0 +1,293 @@
+/* * {
+margin: 0;
+padding: 0;
+} */
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+    font-family: Arial;
+}
+
+
+input[type=text], a {
+    font-size: 15pt;
+}
+
+label {
+    font-size: 15pt;
+    font-weight: bold;
+}
+
+textarea {
+    font-size: 15pt;
+}
+
+select {
+    font-size: 15pt;
+}
+
+button {
+    font-size: 15pt;
+    color: white;
+    background-color: #448BBA;
+}
+
+.wrapper {
+    display: grid;
+    /*grid-template-rows: 60px min-content auto;*/
+    grid-template-rows: 60px auto;
+    grid-gap: 10px;
+    background-color: #fff;
+    color: #444;
+    height: 98%;
+}
+
+
+
+/* TOOLBAR  */
+.toolbar-layout {
+    display: grid;
+    grid-template-rows: 30px 30px;
+}
+
+
+/* TOOLBAR - NO ITEMS SELECTED */
+
+#toolbar-no-selection .row1 {
+    display: grid;
+    grid-template-columns: minmax(200px, 400px) 30px 30px;
+}
+
+#toolbar-no-selection .row2 {
+    display: grid;
+    /* grid-template-columns: 100px 100px 100px; */
+    grid-template-columns: max-content max-content max-content;
+}
+
+#showing-count {
+    font-weight: bold;
+    text-align: center;
+    font-size: 150%;
+    vertical-align: middle;
+}
+
+/* TOOLBAR - ITEMS SELECTED */
+#toolbar-items-selected {
+    display: none;
+}
+
+#toolbar-items-selected .row1 {
+    display: grid;
+    grid-template-columns: 100px 100px 50px 50px;
+}
+
+#toolbar-items-selected .row2 {
+    display: grid;
+    grid-template-columns: max-content max-content max-content max-content;
+}
+
+#append-text img {
+    height: 20px;
+    width: 20px;
+}
+
+/* #append-text-popup {
+    text-decoration: none;
+} */
+
+#remove-text img {
+    height: 20px;
+    width: 20px;
+}
+
+#open-set-popup img {
+    height: 20px;
+    width: 20px;
+}
+
+
+/* TOOLBAR - TASK EDITOR */
+#toolbar-task-editor {
+    grid-template-columns: minmax(200px, 600px) 100px;
+    display: none;
+}
+
+#new-task {
+    grid-column: 1 / 2;
+    grid-row: 1 / 3;
+}
+
+#add-task-save {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+}
+
+#add-task-cancel {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+}
+
+/* END TOOLBAR  */
+
+
+
+.header {
+    background-color: #CBD5DB;
+    color: black;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 150%;
+    vertical-align: center;
+}
+
+#filter-select {
+    max-width: 200px;
+}
+
+#add-task-container {
+    display: none;
+    grid-template-rows: 100px 50px;
+    grid-template-columns: 100px 100px auto;
+}
+
+/* #new-task {
+    grid-row: 1 / 3;
+    grid-column: 1 / -1;
+} */
+
+/*
+#add-task-save {
+    grid-row: 3;
+    grid-column: 1
+}
+*/
+
+/*
+#add-task-cancel {
+    grid-row: 3;
+    grid-column: 2
+}
+*/
+
+/*
+#edit-task-container {
+    display: none;
+    grid-template-columns: 100px 200px 100px 200px 200px 200px;
+    //grid-auto-rows: min-content;
+}
+*/
+
+/*
+#append-remove-container {
+    display: none;
+    grid-template-columns: repeat(6, 100px);
+    grid-gap: 10px;
+}
+*/
+
+/* #append-text {
+    grid-column: 2/4;
+}
+
+#remove-text {
+    grid-column: 5/7;
+} */
+
+#task-container {
+    display: grid;
+    grid-gap: 10px;
+    overflow-y: auto;
+    /* grid-template-rows: auto; */
+    /* height: 50%; */
+    grid-auto-rows: min-content;
+}
+
+.task-row {
+    background-color: white;
+    color: #000;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 150%;
+    display: grid;
+    grid-template-columns: 50px auto;
+    cursor: default;
+    user-select: none;
+}
+
+.selected {
+    background-color: gray;
+    color: white;
+}
+
+.priority-a {
+    background-color: green;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+.priority-b {
+    background-color: blue;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+.priority-default {
+    background-color: gray;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+.text {
+    /* background-color: blue; */
+    padding: 10px;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: lightgray;
+}
+
+.project, .context, .property {
+    color: gray;
+    padding: 10px;
+}
+
+.selected .project, .selected .context, .selected .property {
+    color: white;
+}
+
+#set-priority {
+    width: 150px;
+}
+
+
+/*  POPUP */
+#ui-components-popup {
+    border: 1px solid black;
+}
+
+#append-text-popup a, #remove-text-popup a {
+    display: block;
+    text-decoration: none;
+    color: black;
+    padding: 5px;
+}
+
+#append-text-popup a:hover, #remove-text-popup a:hover{
+    background-color: gray;
+    color: white;
+    text-decoration: none;
+    /* width: 100%; */
+}
+
+/*  END POPUP */
+

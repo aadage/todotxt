@@ -1,0 +1,208 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>ToDo.txt</title>
+    <link rel="stylesheet" href="index.css" />
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="toolbar">
+            <div id="toolbar-no-selection" class="toolbar-layout">
+                <div class="row1">
+                    <input id="filter" type="text" />
+                    <button id="add-task">+</button>
+                    <!-- <button id="menu-toggle">Menu</button> -->
+
+                    <!-- menu items -->
+                    <!--
+                    <button>Undo</button>
+                    <button id="save-filter">Save Filter</button>
+                    <button id="delete-filter">Delete Filter</button>
+                    Show <input id="show-active-items" type="checkbox" title="Show Active Items" checked/> Active 
+                        <input id="show-completed-items" type="checkbox" title="Show Completed Items" checked/> Completed 
+                    <button id="archive">Archive</button>
+                    -->
+                </div>
+
+                <div class="row2">
+                    <select id="filter-select">
+                        <option>--Filter--</option>
+                        <option>+project</option>
+                        <option>@inbox</option>
+                    </select>
+                    <select id="sort-options"></select>
+                    <span id="showing-count" class="showing-count"></span>
+                </div>
+            </div>
+            <div id="toolbar-items-selected" class="toolbar-layout">
+                <div class="row1">
+                    <button id="edit-task">Edit</button>
+                    <button id="delete-task">Delete</button>
+                    <select id="set-priority">
+                        <option value="default">--set priority--</option>
+                        <option></option>
+                        <option>A</option>
+                        <option>B</option>
+                        <option>C</option>
+                        <option>D</option>
+                        <option>E</option>
+                        <option>F</option>
+                        <option>G</option>
+                        <option>H</option>
+                        <option>I</option>
+                        <option>J</option>
+                        <option>K</option>
+                        <option>L</option>
+                        <option>M</option>
+                        <option>N</option>
+                        <option>O</option>
+                        <option>P</option>
+                        <option>Q</option>
+                        <option>R</option>
+                        <option>S</option>
+                        <option>T</option>
+                        <option>U</option>
+                        <option>V</option>
+                        <option>W</option>
+                        <option>X</option>
+                        <option>Y</option>
+                        <option>Z</option>
+                    </select>
+                </div>
+
+                <div class="row2">
+                    <button id="append-text">Append<img src="../images/downarrow.png"/></button>
+                    <button id="remove-text">Remove<img src="../images/downarrow.png"/></button>
+                    <button id="open-set-popup">Set<img src="../images/downarrow.png"/></button>
+                    <div>
+                        <span id="showing-count-2" class="showing-count">142</span> (<span id="selected-count"></span>)
+                    </div>
+                    <!--
+                    <div id="append-remove-container">
+                        <label>Append</label>
+                        <input type="text" id="append-text" />
+                        <label>Remove</label>
+                        <input type="text" id="remove-text" />
+                        <button id="append-remove-save">Save</button>
+                        <button id="append-remove-cancel">Cancel</button>
+                    </div>
+                    -->
+                    <!--
+                    <div>
+                        <button id="set-complete">Set Complete</button>
+                        <input id="set-complete-repeat-date" type="text" placeholder="Repeat Date" />
+                        <input id="set-complete-append-text" type="text" placeholder="append" />
+                        <input id="set-complete-remove-text" type="text" placeholder="remove" />
+                    </div>
+                    <button id="set-incomplete">Set Incomplete</button>
+                    -->
+                </div>
+            </div>
+            <div id="toolbar-task-editor" class="toolbar-layout">
+                <textarea id="new-task"></textarea>
+                <!-- <div id="new-task">four score and seven years ago our fathers brought forth on this continent a new nation.</div> -->
+                <!-- <input type="text" id="new-task" /> -->
+                <button id="add-task-save">Save</button>
+                <button id="add-task-cancel">Cancel</button>
+            </div>
+        </div>
+
+        <!--
+        <div class="header">
+            <input id="filter" type="text" />
+            <button id="add-task">+</button>
+            <select id="filter-select">
+                <option>--Filter--</option>
+                <option>+project</option>
+                <option>@inbox</option>
+            </select>
+            <select id="sort-options"></select>
+            <span id="showing-count"></span>
+            <span id="selected-count"></span>
+            <button>Undo</button>
+            <button id="save-filter">Save Filter</button>
+            <button id="delete-filter">Delete Filter</button>
+            Show <input id="show-active-items" type="checkbox" title="Show Active Items" checked/> Active 
+                <input id="show-completed-items" type="checkbox" title="Show Completed Items" checked/> Completed 
+            <button id="archive">Archive</button>
+        </div>
+        -->
+        <!--
+        <div id="editors">
+            <div id="add-task-container">
+                <textarea id="new-task"></textarea>
+                <button id="add-task-save">Save</button>
+                <button id="add-task-cancel">Cancel</button>
+            </div>
+            <div id="append-remove-container">
+                <label>Append</label>
+                <input type="text" id="append-text" />
+                <label>Remove</label>
+                <input type="text" id="remove-text" />
+                <button id="append-remove-save">Save</button>
+                <button id="append-remove-cancel">Cancel</button>
+            </div>
+            <div id="edit-task-container">
+                <button id="edit-task">Edit</button>
+                <button id="append-remove-text">Append/Remove</button>
+                <button id="delete-task">Delete</button>
+                <select id="set-priority">
+                    <option value="default">--set priority--</option>
+                    <option></option>
+                    <option>A</option>
+                    <option>B</option>
+                    <option>C</option>
+                    <option>D</option>
+                    <option>E</option>
+                    <option>F</option>
+                    <option>G</option>
+                    <option>H</option>
+                    <option>I</option>
+                    <option>J</option>
+                    <option>K</option>
+                    <option>L</option>
+                    <option>M</option>
+                    <option>N</option>
+                    <option>O</option>
+                    <option>P</option>
+                    <option>Q</option>
+                    <option>R</option>
+                    <option>S</option>
+                    <option>T</option>
+                    <option>U</option>
+                    <option>V</option>
+                    <option>W</option>
+                    <option>X</option>
+                    <option>Y</option>
+                    <option>Z</option>
+                </select>
+                <div>
+                    <button id="set-complete">Set Complete</button>
+                    <input id="set-complete-repeat-date" type="text" placeholder="Repeat Date" />
+                    <input id="set-complete-append-text" type="text" placeholder="append" />
+                    <input id="set-complete-remove-text" type="text" placeholder="remove" />
+                </div>
+                <button id="set-incomplete">Set Incomplete</button>
+            </div>
+        </div>
+        -->
+        <div id="task-container"></div>
+    </div>
+    <!--
+    <ul id="append-text-popup">
+        <li><input id="text-to-append" type="text" /></li>
+        <li>@tag1</li>
+        <li>@tag2</li>
+        <li>#context1</li>
+        <li>#context2</li>
+    </ul>
+    -->
+    <script>
+        let iocModule = require('../../../js/src/core/utility/ioc.js');
+        iocModule.IoC.IndexPresenter.init();
+    </script>
+</body>
+
+</html>

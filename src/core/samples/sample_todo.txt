@@ -1,0 +1,17 @@
+(A) Call Mom @Phone +Family +KeepingInTouch
+(A) Schedule annual checkup +Health
+(B) Outline chapter 5 +Novel @Computer
+(C) Add cover sheets @Office +TPSReports
+Plan backyard herb garden @Home
+Pick up milk @GroceryStore
+Research self-publishing services +Novel @Computer
+x Download Todo.txt mobile app @Phone
+2014-04-23 this task has a creation date
+(A) 2014-04-23 this task also has a creation date
+x a completed task starts with an x
+x 2014-04-22 completion date appears directly after the x.
+x 2014-04-23 2014-04-01 completion date appears first followed by creation date
+xylophone not completed
+X 2012-01-01 Also not completed
+(A) x This one has a priority and is not completed
+http://todotxt.com
