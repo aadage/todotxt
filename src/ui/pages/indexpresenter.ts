@@ -1,6 +1,6 @@
 import {Task} from '../../core/domain/Task';
 import {IIndexView, TaskUpdate} from './IIndexView';
-import { RowClickEvent } from './rowClickEvent';
+import { RowClickEvent } from './RowClickEvent';
 import { DateFn } from '../../core/utility/DateFunctions';
 import { ArrayFn } from '../../core/utility/ArrayFunctions';
 import { ITaskService } from '../../core/services/ITaskService';

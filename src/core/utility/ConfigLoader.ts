@@ -15,6 +15,10 @@ export class ConfigLoader implements IConfigLoader {
         let configFile: string = `${appDataDirectory}${path.sep}config.json`;
         let config: Config = new Config();
 
+        if (!this.fileSystem.DirectoryExists(appDataDirectory)) {
+            this.fileSystem.CreateDirectory(appDataDirectory);
+        }
+
         //look for a config file in the app data directory
         if (this.fileSystem.FileExists(configFile)) {
             let contents: string = this.fileSystem.ReadFile(configFile);
