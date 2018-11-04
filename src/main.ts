@@ -20,7 +20,7 @@ let createWindow = () => {
                 {role: 'undo'},
                 {role: 'redo'},
                 // {type: 'separator'},
-                // {role: 'cut'},
+                // {role: 'cut'}, 
                 // {role: 'copy'},
                 // {role: 'paste'},
                 // {role: 'pasteandmatchstyle'},
