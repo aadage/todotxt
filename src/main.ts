@@ -39,11 +39,11 @@ let createWindow = () => {
                 {role: 'zoomin'},
                 {role: 'zoomout'},
                 {type: 'separator'},
-                {role: 'togglefullscreen'},
-                {
-                    label: 'Archive',
-                    click () { alert('archive!') }
-                }
+                {role: 'togglefullscreen'}
+                // {
+                //     label: 'Archive',
+                //     click () { alert('archive!') }
+                // }
             ]
         },
         {
