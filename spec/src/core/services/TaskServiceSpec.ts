@@ -275,16 +275,16 @@ describe("TaskService", function() {
             svc.DeleteTasks([completedTaskText]);
         });
 
-        it("if the repeatDate parameter is included marks the current task complete and creates a new task with a start date set to the value of repeatDate.", () => {
+        it("if the copyAppendText parameter is included marks the current task complete and creates a new task with the given text appended to the new task", () => {
             svc.DeleteTasks(['task1']);
             svc.SaveTask('task1');
             let currentDate: string = DateFn.Format(new Date());
             let repeatDate: Date = new Date(2020, 2, 28);
-            let repeatDateString: string = DateFn.Format(repeatDate);
+            let repeatDateString: string = `t:${DateFn.Format(repeatDate)}`;
             let completedTaskText: string = `x ${currentDate} task1`;
-            let repeatedTaskText: string = `task1 t:${repeatDateString}`;
+            let repeatedTaskText: string = `task1 ${repeatDateString}`;
 
-            svc.SetComplete('task1', repeatDate);
+            svc.SetComplete('task1', repeatDateString);
             let tasks: Array<Task> = svc.GetTasks();
             let completedTaskFound = false;
             let repeatedTaskFound = false;
@@ -305,16 +305,15 @@ describe("TaskService", function() {
             svc.DeleteTasks([completedTaskText, repeatedTaskText]);
         });
 
-        it("if the repeatDate parameter is included and the original task has a priority the priority is removed from the newly created item.", () => {
+        it("if the copyAppendText parameter is included and the original task has a priority the priority is removed from the newly created item.", () => {
             svc.DeleteTasks(['(A) task1']);
             svc.SaveTask('(A) task1');
             let currentDate: string = DateFn.Format(new Date());
-            let repeatDate: Date = new Date(2020, 2, 28);
-            let repeatDateString: string = DateFn.Format(repeatDate);
+            let copyAppendText: string = '@friday';
             let completedTaskText: string = `x ${currentDate} task1`;
-            let repeatedTaskText: string = `task1 t:${repeatDateString}`;
+            let repeatedTaskText: string = `task1 ${copyAppendText}`;
 
-            svc.SetComplete('(A) task1', repeatDate);
+            svc.SetComplete('(A) task1', copyAppendText);
             let tasks: Array<Task> = svc.GetTasks();
             let completedTaskFound = false;
             let repeatedTaskFound = false;
@@ -338,14 +337,15 @@ describe("TaskService", function() {
         it("if the repeatDate parameter is included and the original task already has a start (t) date it will be updated.", () => {
             let currentDate: string = DateFn.Format(new Date());
             let repeatDate: Date = new Date(2020, 2, 28);
-            let repeatDateString: string = DateFn.Format(repeatDate);
+            let repeatDateString: string = `t:${DateFn.Format(repeatDate)}`;
             let originalTaskText: string = '(A) task1 t:2000-01-01';
             let completedTaskText: string = `x ${currentDate} task1 t:2000-01-01`;
-            let repeatedTaskText: string = `task1 t:${repeatDateString}`;
+            let repeatedTaskText: string = `task1 ${repeatDateString}`;
 
             svc.SaveTask(originalTaskText);
 
-            svc.SetComplete(originalTaskText, repeatDate);
+            //svc.SetComplete(originalTaskText, repeatDate);
+            svc.SetComplete(originalTaskText, repeatDateString);
             let tasks: Array<Task> = svc.GetTasks();
             let completedTaskFound = false;
             let repeatedTaskFound = false;

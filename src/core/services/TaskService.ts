@@ -114,7 +114,7 @@ export class TaskService implements ITaskService {
         }
     }
 
-    public SetComplete(taskRawText: string, repeatDate: Date | null = null): void {
+    public SetComplete(taskRawText: string, copyAppendText: string | null = null): void {
         let currentDate: string = DateFn.Format(new Date());
         let originalTask: Task = this.parser.Parse(taskRawText);
         let newTaskRawText: string;
@@ -130,22 +130,60 @@ export class TaskService implements ITaskService {
         if (!originalTask.Completed) {
             this.SaveTask(newTaskRawText, originalTask);
 
-            if (repeatDate !== null) {
+            if (copyAppendText !== null && copyAppendText.trim().length > 0) {
 
-                let repeatDateString: string = DateFn.Format(<Date>repeatDate);
+                //let repeatDateString: string = DateFn.Format(<Date>repeatDate);
 
-                newTaskRawText = taskRawText.replace(this.startDateRegEx, '');
+                if (this.startDateRegEx.test(copyAppendText)) {
+                    newTaskRawText = taskRawText.replace(this.startDateRegEx, '');
+                }
+                else {
+                    newTaskRawText = taskRawText;
+                }
 
                 if (originalTask.Priority !== null) {
                     newTaskRawText = `${newTaskRawText.substr(4)}`;
                 }
                 
-                newTaskRawText = `${newTaskRawText} t:${repeatDateString}`;
+                newTaskRawText = `${newTaskRawText} ${copyAppendText}`;
 
                 this.SaveTask(newTaskRawText);
             }
         }
     }
+
+    // public SetComplete(taskRawText: string, repeatDate: Date | null = null): void {
+    //     let currentDate: string = DateFn.Format(new Date());
+    //     let originalTask: Task = this.parser.Parse(taskRawText);
+    //     let newTaskRawText: string;
+
+    //     if (originalTask.Priority !== null) {
+    //         newTaskRawText = `x ${currentDate} ${taskRawText.substr(4)}`;
+    //     }
+    //     else {
+    //         newTaskRawText = `x ${currentDate} ${taskRawText}`;
+    //     }
+
+
+    //     if (!originalTask.Completed) {
+    //         this.SaveTask(newTaskRawText, originalTask);
+
+    //         if (repeatDate !== null) {
+
+    //             let repeatDateString: string = DateFn.Format(<Date>repeatDate);
+
+    //             newTaskRawText = taskRawText.replace(this.startDateRegEx, '');
+
+    //             if (originalTask.Priority !== null) {
+    //                 newTaskRawText = `${newTaskRawText.substr(4)}`;
+    //             }
+                
+    //             newTaskRawText = `${newTaskRawText} t:${repeatDateString}`;
+
+    //             this.SaveTask(newTaskRawText);
+    //         }
+    //     }
+    // }
 
     public SetIncomplete(taskRawText: string): void {
         let newTaskRawText: string = taskRawText.substring(13);

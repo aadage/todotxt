@@ -88,11 +88,12 @@ export interface IIndexView {
     removeTextButtonClicked?: () => void;
     removeTextOptionSelected?: (textToRemove: string) => void;
     openSetPopupButtonClicked?: () => void;
-    setCompleteButtonClicked?: (repeatDate: string) => void;
+    //setCompleteButtonClicked?: (repeatDate: string) => void;
+    setCompleteButtonClicked?: (copyAppendText: string) => void;
     appendRemoveSaveButtonClicked?: () => void;
     appendRemoveCancelButtonClicked?: () => void;
     deleteTaskButtonClicked?: () => void;
-    markCompleteButtonClicked?: () => void;
+    //markCompleteButtonClicked?: () => void;
     markIncompleteButtonClicked?: () => void;
     saveFilterButtonClicked?: () => void;
     deleteFilterButtonClicked?: () => void;

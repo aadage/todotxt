@@ -16,35 +16,16 @@ export class IndexView implements IIndexView {
         this.filterBoxElement = <HTMLInputElement>document.getElementById('filter');
         this.newTaskElement = <HTMLTextAreaElement>document.getElementById('new-task');
         this.addTaskButton = <HTMLButtonElement>document.getElementById('add-task');
-        //this.addTaskContainer = <HTMLDivElement>document.getElementById('add-task-container');
         this.addTaskCancelButton = <HTMLButtonElement>document.getElementById('add-task-cancel');
         this.addTaskSaveButton = <HTMLButtonElement>document.getElementById('add-task-save');
-        //this.editTaskContainer = <HTMLDivElement>document.getElementById('edit-task-container');
-        //this.appendRemoveContainer = <HTMLDivElement>document.getElementById('append-remove-container');
-        //this.appendTextBox = <HTMLInputElement>document.getElementById('append-text');
-        //this.removeTextBox = <HTMLInputElement>document.getElementById('remove-text');
         this.editTaskButton = <HTMLButtonElement>document.getElementById('edit-task');
         this.deleteTaskButton = <HTMLButtonElement>document.getElementById('delete-task');
-        //this.setCompleteButton = <HTMLButtonElement>document.getElementById('set-complete');
-        //this.setIncompleteButton = <HTMLButtonElement>document.getElementById('set-incomplete');
-        //this.appendRemoveTextButton = <HTMLButtonElement>document.getElementById('append-remove-text');
         this.appendTextButton = <HTMLButtonElement>document.getElementById('append-text');
         this.removeTextButton = <HTMLButtonElement>document.getElementById('remove-text');
         this.openSetPopupButton = <HTMLButtonElement>document.getElementById('open-set-popup');
-        //this.appendRemoveSaveButton = <HTMLButtonElement>document.getElementById('append-remove-save');
-        //this.appendRemoveCancelButton = <HTMLButtonElement>document.getElementById('append-remove-cancel');
         this.setPriorityElement = <HTMLSelectElement>document.getElementById('set-priority');
         this.taskContainer = <HTMLDivElement>document.getElementById('task-container');
-        //this.showingCountElement = <HTMLSpanElement>document.getElementById('showing-count');
         this.selectedCountElement = <HTMLSpanElement>document.getElementById('selected-count');
-        //this.saveFilterButton = <HTMLButtonElement>document.getElementById("save-filter");
-        //this.deleteFilterButton = <HTMLButtonElement>document.getElementById("delete-filter");
-        //this.showCompletedItemsCheckbox = <HTMLInputElement>document.getElementById("show-completed-items");
-        //this.showActiveItemsCheckbox = <HTMLInputElement>document.getElementById("show-active-items");
-        //this.setCompleteRepeatDateTextBox = <HTMLInputElement>document.getElementById("set-complete-repeat-date");
-        // this.setCompleteAppendTextBox = <HTMLInputElement>document.getElementById('set-complete-append-text');
-        // this.setCompleteRemoveTextBox = <HTMLInputElement>document.getElementById('set-complete-remove-text');
-        // this.archiveButton = <HTMLButtonElement>document.getElementById("archive");
         this.noItemsSelectedToolbar = <HTMLDivElement>document.getElementById('toolbar-no-selection');
         this.itemsSelectedToolbar = <HTMLDivElement>document.getElementById('toolbar-items-selected');
         this.taskEditorToolbar = <HTMLDivElement>document.getElementById('toolbar-task-editor');
@@ -59,35 +40,16 @@ export class IndexView implements IIndexView {
     filterBoxElement: HTMLInputElement;
     newTaskElement: HTMLTextAreaElement;
     addTaskButton: HTMLButtonElement;
-    //addTaskContainer: HTMLDivElement;
     addTaskCancelButton: HTMLButtonElement;
     addTaskSaveButton: HTMLButtonElement;
-    //editTaskContainer: HTMLDivElement;
-    //appendRemoveContainer: HTMLDivElement;
-    //appendTextBox: HTMLInputElement;
-    //removeTextBox: HTMLInputElement;
     editTaskButton: HTMLButtonElement;
     deleteTaskButton: HTMLButtonElement;
-    //setCompleteButton: HTMLButtonElement;
-    //setIncompleteButton: HTMLButtonElement;
-    //appendRemoveTextButton: HTMLButtonElement;
     appendTextButton: HTMLButtonElement;
     removeTextButton: HTMLButtonElement;
     openSetPopupButton: HTMLButtonElement;
-    //appendRemoveSaveButton: HTMLButtonElement;
-    //appendRemoveCancelButton: HTMLButtonElement;
     setPriorityElement: HTMLSelectElement;
     taskContainer: HTMLDivElement;
-    //showingCountElement: HTMLSpanElement;
     selectedCountElement: HTMLSpanElement;
-    //saveFilterButton: HTMLButtonElement;
-    //deleteFilterButton: HTMLButtonElement;
-    //showCompletedItemsCheckbox: HTMLInputElement; 
-    //showActiveItemsCheckbox: HTMLInputElement; 
-    //setCompleteRepeatDateTextBox: HTMLInputElement;
-    // setCompleteAppendTextBox: HTMLInputElement;
-    // setCompleteRemoveTextBox: HTMLInputElement;
-    // archiveButton: HTMLButtonElement;
     noItemsSelectedToolbar: HTMLDivElement;
     itemsSelectedToolbar: HTMLDivElement;
     taskEditorToolbar: HTMLDivElement;
@@ -214,25 +176,23 @@ export class IndexView implements IIndexView {
     filterTextChanged?: (filterOption: string) => void;
     filterOptionChanged?: (filterText: string) => void;
     taskRowClicked?: (clickEvent: RowClickEvent) => void;
-    //taskRowRightClicked?: (rowClickEvent: RowClickEvent) => void;
     windowKeyPressed?: (key: string) => void;
     newTaskKeyPressed?: (key: string) => void;
     addTaskButtonClicked?: () => void;
     addTaskCancelButtonClicked?: () => void;
     addTaskSaveButtonClicked?: () => void;
     editTaskButtonClicked?: () => void;
-    //appendRemoveTextButtonClicked?: () => void;
     appendTextButtonClicked?: () => void;
     appendTextOptionSelected?: (textToAppend: string) => void;
     removeTextButtonClicked?: () => void;
     removeTextOptionSelected?: (textToRemove: string) => void;
     openSetPopupButtonClicked?: () => void;
-    setCompleteButtonClicked?: (repeatDate: string) => void;
+    setCompleteButtonClicked?: (copyAppendText: string) => void;
     appendRemoveSaveButtonClicked?: () => void;
     appendRemoveCancelButtonClicked?: () => void;
     deleteTaskButtonClicked?: () => void;
     setPriorityOptionChanged?: (priorityOption: string) => void;
-    markCompleteButtonClicked?: () => void;
+    //markCompleteButtonClicked?: () => void;
     markIncompleteButtonClicked?: () => void;
     saveFilterButtonClicked?: () => void;
     deleteFilterButtonClicked?: () => void;
@@ -274,14 +234,6 @@ export class IndexView implements IIndexView {
         };
     }
 
-    // hideEditTaskForm(): void {
-    //     //this.editTaskContainer.style.display = 'none';
-    // }
-
-    // showEditTaskForm(): void {
-    //     //this.editTaskContainer.style.display = 'grid';
-    // }
-
     showEditTaskButton(): void {
         this.editTaskButton.style.visibility = 'visible';
     }
@@ -290,31 +242,8 @@ export class IndexView implements IIndexView {
         this.editTaskButton.style.visibility = 'hidden';
     }
 
-    // hideAddTaskForm(): void {
-    //     //this.addTaskContainer.style.display = 'none';
-    // }
-
-    // showAddTaskForm(): void {
-    //     //this.addTaskContainer.style.display = 'grid';
-    //     this.hideAllToolbarLayouts();
-    //     this.toolbarTaskEditor.style.display = 'grid';
-    // }
-
-    // hideAppendRemoveForm(): void {
-    //     //this.appendRemoveContainer.style.display = 'none';
-    // }
-
-    // showAppendRemoveForm(): void {
-    //     //this.appendRemoveContainer.style.display = 'grid';
-    // }
-
     showAppendTextPopup(): void {
         let contents: HTMLElement = this.createAppendTextElement();
-        // contents.style.position = 'absolute';
-        // contents.style.top = '100px';
-        // contents.style.left = '100px';
-        // contents.style.backgroundColor = 'blue';
-        //contents.style.display = 'block';
         let options: PopupOptions = new PopupOptions();
         options.position = PopupBoxPosition.BelowAlignLeft;
         this.popup.ShowHidePopup(this.appendTextButton, contents, options);
@@ -586,10 +515,15 @@ export class IndexView implements IIndexView {
 
                 //#set-complete
                 if (element.id === 'set-complete') {
-                    let repeatDateTextbox: HTMLInputElement | null = <HTMLInputElement>document.getElementById('repeat-date');
-                    if (repeatDateTextbox !== null && _this.setCompleteButtonClicked) {
-                        _this.setCompleteButtonClicked(repeatDateTextbox.value === null ? '' : repeatDateTextbox.value);
-                        repeatDateTextbox.value = '';
+                    //let repeatDateTextbox: HTMLInputElement | null = <HTMLInputElement>document.getElementById('repeat-date');
+                    // if (repeatDateTextbox !== null && _this.setCompleteButtonClicked) {
+                    //     _this.setCompleteButtonClicked(repeatDateTextbox.value === null ? '' : repeatDateTextbox.value);
+                    //     repeatDateTextbox.value = '';
+                    // }
+                    let copyAppendTextTextbox: HTMLInputElement | null = <HTMLInputElement>document.getElementById('copy-append-text');
+                    if (copyAppendTextTextbox !== null && _this.setCompleteButtonClicked) {
+                        _this.setCompleteButtonClicked(copyAppendTextTextbox.value === null ? '' : copyAppendTextTextbox.value);
+                        copyAppendTextTextbox.value = '';
                     }
                 }
             }
@@ -744,9 +678,14 @@ export class IndexView implements IIndexView {
         element.style.backgroundColor = 'white';
 
         element.innerHTML = `
-                <div><input type='text' id="repeat-date" placeholder="repeat date"/></div>
+                <div><input type='text' id="copy-append-text" placeholder="copy and append text"/></div>
                 <div><button id="set-complete">Set Complete</button></div>
         `;
+
+        // element.innerHTML = `
+        //         <div><input type='text' id="repeat-date" placeholder="repeat date"/></div>
+        //         <div><button id="set-complete">Set Complete</button></div>
+        // `;
 
         return element;
     }
