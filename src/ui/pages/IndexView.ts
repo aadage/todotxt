@@ -187,7 +187,7 @@ export class IndexView implements IIndexView {
     removeTextButtonClicked?: () => void;
     removeTextOptionSelected?: (textToRemove: string) => void;
     openSetPopupButtonClicked?: () => void;
-    setCompleteButtonClicked?: (copyAppendText: string) => void;
+    setCompleteButtonClicked?: (copyAppendText: string, copyRemoveText: string) => void;
     appendRemoveSaveButtonClicked?: () => void;
     appendRemoveCancelButtonClicked?: () => void;
     deleteTaskButtonClicked?: () => void;
@@ -515,14 +515,12 @@ export class IndexView implements IIndexView {
 
                 //#set-complete
                 if (element.id === 'set-complete') {
-                    //let repeatDateTextbox: HTMLInputElement | null = <HTMLInputElement>document.getElementById('repeat-date');
-                    // if (repeatDateTextbox !== null && _this.setCompleteButtonClicked) {
-                    //     _this.setCompleteButtonClicked(repeatDateTextbox.value === null ? '' : repeatDateTextbox.value);
-                    //     repeatDateTextbox.value = '';
-                    // }
                     let copyAppendTextTextbox: HTMLInputElement | null = <HTMLInputElement>document.getElementById('copy-append-text');
-                    if (copyAppendTextTextbox !== null && _this.setCompleteButtonClicked) {
-                        _this.setCompleteButtonClicked(copyAppendTextTextbox.value === null ? '' : copyAppendTextTextbox.value);
+                    let copyRemoveTextTextbox: HTMLInputElement | null = <HTMLInputElement>document.getElementById('copy-remove-text');
+                    if (copyAppendTextTextbox !== null && copyRemoveTextTextbox !== null && _this.setCompleteButtonClicked) {
+                        let appendText = copyAppendTextTextbox.value === null ? '' : copyAppendTextTextbox.value;
+                        let removeText = copyRemoveTextTextbox.value === null ? '' : copyRemoveTextTextbox.value;
+                        _this.setCompleteButtonClicked(appendText, removeText);
                         copyAppendTextTextbox.value = '';
                     }
                 }
@@ -557,10 +555,6 @@ export class IndexView implements IIndexView {
             if (_this.editTaskButtonClicked) _this.editTaskButtonClicked();
         }
 
-        // this.appendRemoveTextButton.onclick = (ev: MouseEvent) => {
-        //     if (this.appendRemoveTextButtonClicked) this.appendRemoveTextButtonClicked();
-        // }
-
         _this.appendTextButton.onclick = (ev: MouseEvent) => {
             if (_this.appendTextButtonClicked) _this.appendTextButtonClicked();
             //ev.cancelBubble = true;
@@ -574,14 +568,6 @@ export class IndexView implements IIndexView {
             if (_this.openSetPopupButtonClicked) _this.openSetPopupButtonClicked();
         }
 
-        // this.appendRemoveSaveButton.onclick = (ev: MouseEvent) => {
-        //     if (this.appendRemoveSaveButtonClicked) this.appendRemoveSaveButtonClicked();
-        // }
-
-        // this.appendRemoveCancelButton.onclick = (ev: MouseEvent) => {
-        //     if (this.appendRemoveCancelButtonClicked) this.appendRemoveCancelButtonClicked();
-        // }
-
         _this.deleteTaskButton.onclick = (ev: MouseEvent) => {
             if (_this.deleteTaskButtonClicked) _this.deleteTaskButtonClicked();
         }
@@ -589,34 +575,6 @@ export class IndexView implements IIndexView {
         _this.setPriorityElement.onchange = () => {
             if (_this.setPriorityOptionChanged) _this.setPriorityOptionChanged(_this.setPriorityElement.value);
        };
-
-        // this.setCompleteButton.onclick = (ev: MouseEvent) => {
-        //     if (this.markCompleteButtonClicked) this.markCompleteButtonClicked();
-        // };
-
-        // this.setIncompleteButton.onclick = (ev: MouseEvent) => {
-        //     if (this.markIncompleteButtonClicked) this.markIncompleteButtonClicked();
-        // };
-
-        // this.saveFilterButton.onclick = (ev: MouseEvent) => {
-        //     if (this.saveFilterButtonClicked) this.saveFilterButtonClicked();
-        // };
-
-        // this.deleteFilterButton.onclick = (ev: MouseEvent) => {
-        //     if (this.deleteFilterButtonClicked) this.deleteFilterButtonClicked();
-        // };
-
-        // this.showCompletedItemsCheckbox.onchange = () => {
-        //     if (this.showCompletedItemsChanged) this.showCompletedItemsChanged();
-        // }
-
-        // this.showActiveItemsCheckbox.onchange = () => {
-        //     if (this.showActiveItemsChanged) this.showActiveItemsChanged();
-        // }
-
-        // this.archiveButton.onclick = (ev: MouseEvent) => {
-        //     if (this.archiveButtonClicked) this.archiveButtonClicked();
-        // }
     }
     
     private createAppendTextElement(): HTMLElement {
@@ -679,13 +637,9 @@ export class IndexView implements IIndexView {
 
         element.innerHTML = `
                 <div><input type='text' id="copy-append-text" placeholder="copy and append text"/></div>
+                <div><input type='text' id="copy-remove-text" placeholder="copy and remove text"/></div>
                 <div><button id="set-complete">Set Complete</button></div>
         `;
-
-        // element.innerHTML = `
-        //         <div><input type='text' id="repeat-date" placeholder="repeat date"/></div>
-        //         <div><button id="set-complete">Set Complete</button></div>
-        // `;
 
         return element;
     }

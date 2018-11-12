@@ -5,8 +5,7 @@ export interface ITaskService {
     SaveTask(taskRawText: string, originalTask?: Task): void;
     DeleteTasks(tasksRawText: Array<string>): void;
     ArchiveCompletedTasks(): void;
-    //SetComplete(taskRawText: string, repeatDate?: Date | null): void;
-    SetComplete(taskRawText: string, copyAppendText?: string | null): void;
+    SetComplete(taskRawText: string, copyAppendText?: string | null, copyRemoveText?: string | null): void;
     SetIncomplete(taskRawText: string): void;
     GetArchivedTasks(year: number): Array<Task>;
 

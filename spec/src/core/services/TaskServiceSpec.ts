@@ -344,7 +344,6 @@ describe("TaskService", function() {
 
             svc.SaveTask(originalTaskText);
 
-            //svc.SetComplete(originalTaskText, repeatDate);
             svc.SetComplete(originalTaskText, repeatDateString);
             let tasks: Array<Task> = svc.GetTasks();
             let completedTaskFound = false;

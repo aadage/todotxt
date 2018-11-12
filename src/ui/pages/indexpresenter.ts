@@ -119,13 +119,6 @@ export class IndexPresenter {
             }
         }
 
-        // _this.view.appendRemoveTextButtonClicked = () => {
-        //     alert('implement me!');
-        //     // _this.view.hideEditTaskForm();
-        //     // _this.view.showAppendRemoveForm();
-        //     // _this.view.appendTextFocus();
-        // }
-
         _this.view.appendTextButtonClicked = () => {
             _this.view.showAppendTextPopup();
         }
@@ -151,37 +144,20 @@ export class IndexPresenter {
             _this.view.showSetCompletePoup();
         }
 
-        _this.view.setCompleteButtonClicked = (copyAppendText: string) => {
+
+        _this.view.setCompleteButtonClicked = (copyAppendText: string, copyRemoveText: string) => {
             let taskUpdates: Array<TaskUpdate> = new Array<TaskUpdate>();
             let currentDate: string = DateFn.Format(new Date());
-            //let date: Date | null = repeatDate.trim() === "" ? null : DateFn.Parse(repeatDate);
-            //let appendText: string = _this.view.setCompleteAppendText.trim();
-            //let removeText: string = _this.view.setCompleteRemoveText.trim();
 
             for (let i = 0; i < _this._selectedIndexes.length; i++) {
                 let originalTask: Task = _this._displayedTasks[_this._selectedIndexes[i]];
                 let taskRawText: string = originalTask.RawText;
-
-                // if (appendText.length > 0) {
-                //     let updatedTasks: Array<string> = _this.taskService.AppendText(appendText, [taskRawText]);
-                //     taskRawText = updatedTasks[0];
-                //     _this.view.setCompleteAppendText = '';
-                // }
-
-                // if (removeText.length > 0) {
-                //     let updatedTasks: Array<string> = _this.taskService.RemoveText(removeText, [taskRawText]);
-                //     taskRawText = updatedTasks[0];
-                //     _this.view.setCompleteRemoveText = '';
-                // }
-
-                //_this.taskService.SetComplete(taskRawText, date);
-                _this.taskService.SetComplete(taskRawText, copyAppendText);
+                _this.taskService.SetComplete(taskRawText, copyAppendText, copyRemoveText);
             }
             _this._tasks = _this.taskService.GetTasks();
             _this.loadTasks();
             _this.loadFilterAndAppendTextOptions();
             _this.view.filterTextFocus();
-            //_this.view.setCompleteRepeatDate = '';
             _this.updateToolbars(false);
         }
 
@@ -267,38 +243,6 @@ export class IndexPresenter {
                 _this.view.filterTextFocus();
             }
         }
-
-        // _this.view.markCompleteButtonClicked = () => {
-        //     let taskUpdates: Array<TaskUpdate> = new Array<TaskUpdate>();
-        //     let currentDate: string = DateFn.Format(new Date());
-        //     let repeatDate: Date | null = _this.view.setCompleteRepeatDate.trim() === "" ? null : DateFn.Parse(_this.view.setCompleteRepeatDate);
-        //     let appendText: string = _this.view.setCompleteAppendText.trim();
-        //     let removeText: string = _this.view.setCompleteRemoveText.trim();
-
-        //     for (let i = 0; i < _this._selectedIndexes.length; i++) {
-        //         let originalTask: Task = _this._displayedTasks[_this._selectedIndexes[i]];
-        //         let taskRawText: string = originalTask.RawText;
-
-        //         if (appendText.length > 0) {
-        //             let updatedTasks: Array<string> = _this.taskService.AppendText(appendText, [taskRawText]);
-        //             taskRawText = updatedTasks[0];
-        //             _this.view.setCompleteAppendText = '';
-        //         }
-
-        //         if (removeText.length > 0) {
-        //             let updatedTasks: Array<string> = _this.taskService.RemoveText(removeText, [taskRawText]);
-        //             taskRawText = updatedTasks[0];
-        //             _this.view.setCompleteRemoveText = '';
-        //         }
-
-        //         _this.taskService.SetComplete(taskRawText, repeatDate);
-        //     }
-        //     _this._tasks = _this.taskService.GetTasks();
-        //     _this.loadTasks();
-        //     _this.loadFilterAndAppendTextOptions();
-        //     _this.view.filterTextFocus();
-        //     _this.view.setCompleteRepeatDate = '';
-        // }
 
         _this.view.markIncompleteButtonClicked = () => {
             let taskUpdates: Array<TaskUpdate> = new Array<TaskUpdate>();
